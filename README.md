@@ -1,6 +1,5 @@
-# Soccer School Management System
+# Soccer School Management
 [![Flutter Version](https://img.shields.io/badge/Flutter-Latest-blue)](https://flutter.dev)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 A comprehensive mobile application built with Flutter for soccer school administrators to manage operations, assessments, and team organization. Backend API integration with [fauzantaslim/soccer-school-api](https://github.com/fauzantaslim/soccer-school-api).
 
@@ -119,8 +118,6 @@ API endpoints are configured using environment variables:
 // Example API configuration using .env
 class ApiConfig {
   static String get baseUrl => dotenv.env['API_BASE_URL'] ?? 'http://localhost:3000';
-  static String get apiVersion => dotenv.env['API_VERSION'] ?? 'v1';
-  static String get apiBaseUrl => '$baseUrl/api/$apiVersion';
 }
 ```
 
