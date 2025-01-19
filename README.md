@@ -1,16 +1,72 @@
-# soccer_school_management
+# Soccer School Management
 
-A new Flutter project.
+Welcome to the Soccer School Management repository! This project is designed to manage data and administration for a soccer school. The application is built using Dart and provides a comprehensive interface for managing various aspects of a soccer school.
 
-## Getting Started
+Our backend server is developed in collaboration with [fauzantaslim/soccer-school-api](https://github.com/fauzantaslim/soccer-school-api).
 
-This project is a starting point for a Flutter application.
+## 📚 Table of Contents
 
-A few resources to get you started if this is your first Flutter project:
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Integration](#api-integration)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 📖 Introduction
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Soccer School Management is an application designed to facilitate the management of a soccer school's data and administration. This includes managing students, coaches, schedules, and other related information. The application aims to provide a user-friendly interface for admins to efficiently handle all necessary tasks.
+
+## ✨ Features
+
+- Manage student registrations and profiles
+- Manage coach profiles and schedules
+- Organize training sessions and matches
+- Track attendance and performance
+- Generate reports and analytics
+
+## 🛠️ Technologies
+
+- **Dart**: 96.9%
+- **CMake**: 1.5%
+- **C++**: 0.9%
+- **Swift**: 0.4%
+- **HTML**: 0.2%
+- **C**: 0.1%
+
+## 🚀 Installation
+
+To get started with the Soccer School Management application, follow these steps:
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/Resky89/soccer-school-management.git
+    cd soccer-school-management
+    ```
+
+2. Install the dependencies:
+    ```sh
+    flutter pub get
+    ```
+
+3. Ensure you have the Flutter SDK installed. You can follow the instructions [here](https://flutter.dev/docs/get-started/install).
+
+## 📖 Usage
+
+To run the application, use the following command:
+
+```sh
+flutter run
+```
+
+Ensure you have an emulator or a physical device connected.
+
+## 🌐 API Integration
+
+This application integrates with the backend server developed in collaboration with [fauzantaslim/soccer-school-api](https://github.com/fauzantaslim/soccer-school-api). The API provides endpoints for managing data related to students, coaches, schedules, and more.
+
+To configure the API integration, update the API base URL in the application's configuration file:
+
+```dart
+const String apiUrl = 'https://api.soccer-school.com';
+```
