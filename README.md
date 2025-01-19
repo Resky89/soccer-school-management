@@ -1,74 +1,97 @@
-# Soccer School Management
-
+# Soccer School Management System
 [![Flutter Version](https://img.shields.io/badge/Flutter-Latest-blue)](https://flutter.dev)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-A comprehensive mobile application built with Flutter for managing soccer school operations, including student registrations, coach scheduling, and performance tracking.
+A comprehensive mobile application built with Flutter for soccer school administrators to manage operations, assessments, and team organization.
 
 ## 📚 Table of Contents
 - [Overview](#overview)
+- [Project Structure](#project-structure)
 - [Features](#features)
-- [System Requirements](#system-requirements)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Architecture](#architecture)
-- [Usage](#usage)
 - [API Integration](#api-integration)
 
 ## Overview
+Soccer School Management System is a Flutter-based administrative application designed for staff and coaches to manage soccer school operations. The application provides a comprehensive interface for managing assessments, coaches, departments, and team categories.
 
-Soccer School Management is a Flutter-based application designed to streamline the administrative operations of soccer schools. The application provides an intuitive interface for managing students, coaches, training sessions, and performance analytics. Our backend is developed in collaboration with [fauzantaslim/soccer-school-api](https://github.com/fauzantaslim/soccer-school-api).
+## Project Structure
+```
+lib/
+├── Layout/
+├── Controllers/
+├── Models/
+├── Routes/
+├── Views/
+│   ├── aspek_sub.dart
+│   ├── aspek.dart
+│   ├── assessment_setting.dart
+│   ├── assessment.dart
+│   ├── coach_team_category.dart
+│   ├── coach.dart
+│   ├── departement.dart
+│   ├── home.dart
+│   ├── info_detail.dart
+│   ├── info.dart
+│   ├── login.dart
+│   ├── management.dart
+│   ├── point_rate.dart
+│   ├── profile.dart
+│   ├── schedule.dart
+│   ├── student_detail.dart
+│   ├── students.dart
+│   └── team_category.dart
+└── main.dart
+```
 
 ## Features
 
-### Student Management
-- Student registration and profile management
-- Attendance tracking
-- Performance assessment
-- Progress reports generation
+### Administrative Functions
+The application includes the following management modules:
 
-### Coach Administration
-- Coach profile management
-- Schedule organization
-- Training session planning
-- Performance evaluation tools
+- Staff Authentication & Authorization
+- Department Management
+- Coach Management & Team Assignment
+- Assessment Configuration
+  - Aspect Settings
+  - Sub-aspect Configuration
+  - Assessment Criteria
+  - Point Rating System
+- Team Category Organization
+- Student Records Management
+- Schedule Administration
+- Information Management System
+- Profile Management
 
-### Training Management
-- Session scheduling
-- Match organization
-- Equipment inventory
-- Facility management
+### CRUD Operations
+All administrative modules support full CRUD capabilities:
+- Create new entries and records
+- View detailed information
+- Update existing data
+- Delete/archive records
 
-### Analytics & Reporting
-- Student progress tracking
-- Attendance reports
-- Performance analytics
-- Financial reporting
+### Management Tools
+- Administrative Dashboard
+- Team Organization Tools
+- Assessment Management System
+- Schedule Management
+- Department Structure Management
+- Information Broadcasting System
 
-## System Requirements
+## Getting Started
 
+### Prerequisites
 - Flutter SDK: Latest version
 - Dart: 2.19.0 or higher
 - iOS 11.0+ / Android 5.0+
 - Minimum 2GB RAM
 - 500MB free storage space
 
-## Getting Started
-
-### Prerequisites
-
-Before installation, ensure you have the following:
-- Flutter SDK installed ([Installation Guide](https://flutter.dev/docs/get-started/install))
-- Android Studio or VS Code with Flutter plugins
-- Git installed
-- A suitable IDE (VS Code, Android Studio, or IntelliJ)
-
 ### Installation
-
 1. Clone the repository:
 ```bash
-git clone https://github.com/Resky89/soccer-school-management.git
+git clone https://github.com/yourusername/soccer-school-management.git
 cd soccer-school-management
 ```
 
@@ -77,59 +100,25 @@ cd soccer-school-management
 flutter pub get
 ```
 
-3. Configure environment variables:
-```bash
-cp .env.example .env
-```
-Edit the `.env` file with your configuration settings.
-
-4. Run the application:
+3. Run the application:
 ```bash
 flutter run
 ```
 
-## Architecture
-
-The project follows a clean architecture pattern with the following structure:
-
-```
-lib/
-├── core/
-│   ├── config/
-│   ├── constants/
-│   └── utils/
-├── data/
-│   ├── models/
-│   ├── repositories/
-│   └── services/
-├── presentation/
-│   ├── screens/
-│   ├── widgets/
-│   └── themes/
-└── main.dart
-```
-
-## Usage
-
-After installation, you can:
-
-1. Launch the application
-2. Log in with your administrator credentials
-3. Navigate through the dashboard to access various features
-4. Manage students, coaches, and schedules
-5. Generate reports and analytics
-
 ## API Integration
-
-The application integrates with our backend API for data management:
+Configure API endpoints in your controllers:
 
 ```dart
-// Configure API endpoint in lib/core/config/api_config.dart
+// Example API configuration
 class ApiConfig {
-  static const String baseUrl = 'https://examplelocalhost:3000';
-  
-  static String get apiBaseUrl => '$baseUrl/api/$apiVersion';
+  static const String baseUrl = 'https://api.example.com';
+  static String get apiBaseUrl => '$baseUrl/api/v1';
 }
 ```
 
-For detailed API documentation, visit the [backend repository](https://github.com/fauzantaslim/soccer-school-api).
+## Security Considerations
+- Role-based access control for administrative functions
+- Secure authentication for management staff
+- Data validation and sanitization
+- Comprehensive error handling
+- Audit logging for administrative actions
