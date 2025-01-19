@@ -2,7 +2,7 @@
 [![Flutter Version](https://img.shields.io/badge/Flutter-Latest-blue)](https://flutter.dev)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-A comprehensive mobile application built with Flutter for soccer school administrators to manage operations, assessments, and team organization.
+A comprehensive mobile application built with Flutter for soccer school administrators to manage operations, assessments, and team organization. Backend API integration with [fauzantaslim/soccer-school-api](https://github.com/fauzantaslim/soccer-school-api).
 
 ## 📚 Table of Contents
 - [Overview](#overview)
@@ -11,7 +11,8 @@ A comprehensive mobile application built with Flutter for soccer school administ
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [API Integration](#api-integration)
+- [Backend Integration](#backend-integration)
+- [Environment Configuration](#environment-configuration)
 
 ## Overview
 Soccer School Management System is a Flutter-based administrative application designed for staff and coaches to manage soccer school operations. The application provides a comprehensive interface for managing assessments, coaches, departments, and team categories.
@@ -64,29 +65,13 @@ The application includes the following management modules:
 - Information Management System
 - Profile Management
 
-### CRUD Operations
-All administrative modules support full CRUD capabilities:
-- Create new entries and records
-- View detailed information
-- Update existing data
-- Delete/archive records
-
-### Management Tools
-- Administrative Dashboard
-- Team Organization Tools
-- Assessment Management System
-- Schedule Management
-- Department Structure Management
-- Information Broadcasting System
-
 ## Getting Started
 
 ### Prerequisites
 - Flutter SDK: Latest version
 - Dart: 2.19.0 or higher
 - iOS 11.0+ / Android 5.0+
-- Minimum 2GB RAM
-- 500MB free storage space
+- Backend server running [soccer-school-api](https://github.com/fauzantaslim/soccer-school-api)
 
 ### Installation
 1. Clone the repository:
@@ -100,25 +85,74 @@ cd soccer-school-management
 flutter pub get
 ```
 
-3. Run the application:
+3. Set up environment variables:
+```bash
+cp .env.example .env
+```
+
+4. Configure your `.env` file:
+```plaintext
+# API Configuration
+API_BASE_URL=http://your-backend-url
+API_VERSION=v1
+
+# Authentication
+AUTH_TOKEN_KEY=your_auth_token_key
+
+# Other Configuration
+APP_NAME=Soccer School Management
+DEBUG_MODE=true
+```
+
+5. Run the application:
 ```bash
 flutter run
 ```
 
-## API Integration
-Configure API endpoints in your controllers:
+## Backend Integration
+The application integrates with [fauzantaslim/soccer-school-api](https://github.com/fauzantaslim/soccer-school-api) for all data operations.
+
+### API Configuration
+API endpoints are configured using environment variables:
 
 ```dart
-// Example API configuration
+// Example API configuration using .env
 class ApiConfig {
-  static const String baseUrl = 'https://api.example.com';
-  static String get apiBaseUrl => '$baseUrl/api/v1';
+  static String get baseUrl => dotenv.env['API_BASE_URL'] ?? 'http://localhost:3000';
+  static String get apiVersion => dotenv.env['API_VERSION'] ?? 'v1';
+  static String get apiBaseUrl => '$baseUrl/api/$apiVersion';
+}
+```
+
+### Environment Setup
+1. Create a `.env` file in the project root
+2. Configure the necessary environment variables
+3. Access environment variables in the code using:
+```dart
+import 'package:flutter_dotenv/flutter_dotenv.dart' as dotenv;
+
+// Usage
+String apiUrl = dotenv.env['API_BASE_URL'];
+```
+
+### API Integration Example
+```dart
+Future<void> fetchData() async {
+  final url = '${ApiConfig.apiBaseUrl}/endpoint';
+  final response = await http.get(
+    Uri.parse(url),
+    headers: {
+      'Authorization': 'Bearer ${dotenv.env['AUTH_TOKEN_KEY']}',
+      'Content-Type': 'application/json',
+    },
+  );
+  // Handle response
 }
 ```
 
 ## Security Considerations
-- Role-based access control for administrative functions
-- Secure authentication for management staff
+- Environment variables for sensitive configuration
+- Secure authentication token handling
 - Data validation and sanitization
 - Comprehensive error handling
 - Audit logging for administrative actions
